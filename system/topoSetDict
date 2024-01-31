@@ -1,0 +1,71 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2306                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    
+// Set parete Back
+     {
+        name    BackFaces;           //name of the new set to be created
+        type    faceSet;                  // is it a cellSet or faceSet?
+        action  new;                        // is it new or appending?
+        source  boxToFace;             // extracting faces from the defined box 
+        sourceInfo                          // box details 
+        {
+            box     (0.36555 0.24 0) (1.36555 0.26 0.5); 
+        }
+     }
+     
+  // Set parete Front  
+    {
+        name    FrontFaces;           //name of the new set to be created
+        type    faceSet;                  // is it a cellSet or faceSet?
+        action  new;                        // is it new or appending?
+        source  boxToFace;             // extracting faces from the defined box 
+        sourceInfo                          // box details 
+     {
+            box     (0.36555 -0.26 0) (1.36555 -0.24 0.5); 
+     }
+     }
+  // Set parete Upper
+     {
+        name    UpperFaces;           //name of the new set to be created
+        type    faceSet;                  // is it a cellSet or faceSet?
+        action  new;                        // is it new or appending?
+        source  boxToFace;             // extracting faces from the defined box 
+        sourceInfo                          // box details 
+        {
+            box     (0.36555 -0.25 0.49) (1.36555 0.25 0.51); 
+        }
+     }
+    // Set parete Lower
+     {
+        name    LowerFaces;           //name of the new set to be created
+        type    faceSet;                  // is it a cellSet or faceSet?
+        action  new;                        // is it new or appending?
+        source  boxToFace;             // extracting faces from the defined box 
+        sourceInfo                          // box details 
+        {
+            box     (0.36555 -0.25 0) (1.36555 0.25 0); 
+        }
+     }
+      
+     
+
+);
+
+
+// ************************************************************************* //
