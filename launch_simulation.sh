@@ -1,7 +1,7 @@
 #!/bin.bash
 #$ -cwd                 # workingDirectory
 #$ -j y
-#$ -N Train3
+#$ -N Train4
 #$ -S /bin/bash
 #$ -q all.q                 # queueName
 #$ -pe mpi 32        # cpuNumber
