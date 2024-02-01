@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-polyMeshPatches   (motorBikeGroup);
+polyMeshPatches   (treno15Group);
 
 boundary
 {

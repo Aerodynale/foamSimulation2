@@ -5,7 +5,7 @@
 |   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
-
+# include "../0.orig/include/angulationParameters"
 forceCoeffs1
 {
     type            forceCoeffs;
@@ -17,14 +17,14 @@ forceCoeffs1
 
     log             yes;
 
-    patches         (train);
+    patches         (treno15);
     rho             rhoInf;      // Indicates incompressible
     rhoInf          1;           // Required when rho = rhoInf
     liftDir         (0 0 1);
     dragDir         (1 0 0);
     CofR            (0 0 0);  // Axle midpoint on ground
     pitchAxis       (0 1 0);
-    magUInf         1;
+    magUInf         $parallelVelocity;
     lRef            0.434;        // Wheelbase length
     Aref            0.00895;        // Estimated
 }
@@ -36,7 +36,7 @@ binField1
     libs                    (fieldFunctionObjects);
     binModel                singleDirectionUniformBin;
     fields                  (forceCoeff);
-    patches                 (motorBikeGroup);
+    patches                 (treno15Group);
     decomposePatchValues    true;
     CofR                    ${../forceCoeffs1/CofR};
 
