@@ -55,25 +55,25 @@ geometry
     {
         type box;
         min  (-0.1 -0.48 0);
-        max  (3.2 1 0.4);
+        max  (3.2 0.8 0.4);
     }
     refinementBox2
     {
         type box;
         min  (0.2 -0.35 0);  //li ho leggermente cambiati
-        max  (3 0.9 0.3);
+        max  (2.8 0.65 0.3);
     }
      refinementBox3
     {
         type box;
         min  (0.35 -0.25 0);
-        max  (2.7 0.75 0.25);
+        max  (2.4 0.52 0.25);
     } 
      refinementBox4
     {
         type box;
         min  (0.5 -0.15 0);
-        max  (2.25 0.65 0.2);
+        max  (1.6 0.15 0.2);
     }
 
 }
@@ -97,7 +97,7 @@ castellatedMeshControls
     // Note that this is the number of cells before removing the part which
     // is not 'visible' from the keepPoint. The final number of cells might
     // actually be a lot less.
-    maxGlobalCells 90000000;
+    maxGlobalCells 100000000;
 
     // The surface refinement loop might spend lots of iterations refining just a
     // few cells. This setting will cause refinement to stop if <= minimumRefine
