@@ -6,6 +6,8 @@
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 
+# include "../0.orig/include/angulationParameters"
+
 forces1
 {
     type            forces;
@@ -17,26 +19,26 @@ forces1
 
     log             yes;
 
-    patches         (train);
+    patches         (treno15);
     rho             rhoInf;      // Indicates incompressible
     rhoInf          1;           // Required when rho = rhoInf
     liftDir         (0 0 1);
     dragDir         (1 0 0);
     CofR            (0 0 0);  // Axle midpoint on ground
     pitchAxis       (0 1 0);
-    magUInf         1;
+    magUInf         $parallelVelocity;
     lRef            0.434;        // Wheelbase length
     Aref            0.00895;        // Estimated
 }
 
-
+/*
 binField1
 {
     type                    binField;
     libs                    (fieldFunctionObjects);
     binModel                singleDirectionUniformBin;
     fields                  (force);
-    patches                 (train);
+    patches                 (treno15);
     decomposePatchValues    true;
     CofR                    ${../forces1/CofR};
 
@@ -48,7 +50,7 @@ binField1
     }
     writeControl            timeStep;
 }
-
+*/
 
 
 // ************************************************************************* //

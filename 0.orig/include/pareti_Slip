@@ -5,36 +5,14 @@
 |   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
-
-fieldAverage
+pareti_avanti
 {
-    type            fieldAverage;
-    libs            (fieldFunctionObjects);
+    type slip;
+}
 
-    fields 
-    ( 
-        U
-        {
-            mean           yes;
-            prime2Mean     no
-            base           iteration;
-        }
-    )
-     
-     restartOnRestart     false;
-     restartOnOutput      false;
-     periodicRestart      false;
-     restartPeriod       0.002;
-
-     region        region0;
-     enabled       true;
-     log           true;
-     timeStart       0;
-     timeEnd       300;
-     executeControl timeStep;
-     executeInterval 1;
-     writeControl   timeStep;
-     writeInterval     1;
+pareti_dietro
+{
+    type slip;
 }
 
 

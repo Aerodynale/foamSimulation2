@@ -13,45 +13,18 @@ FoamFile
     object      omega;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
+#include       "include/angulationParameters"
 #include        "include/initialConditions"
 
 dimensions      [0 0 -1 0 0 0 0];
 
 internalField   uniform $turbulentOmega;
 
-
-
 boundaryField
 {
     #includeEtc "caseDicts/setConstraintTypes"
 
     #include "include/fixedInlet"
-   // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
-
-    Back
-    {
-        type            omegaWallFunction;
-        value           $internalField;
-    }
-
-   Upper
-    {
-        type            omegaWallFunction;
-        value           $internalField;
-    }
-
-Front
-    {
-        type            omegaWallFunction;
-        value           $internalField;
-    }
-    Lower 
-    {
-        type            omegaWallFunction;
-        value           $internalField;
-    }
-    // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
 
     outlet
     {
@@ -66,13 +39,51 @@ Front
         value           $internalField;
     }
 
-    train
+    treno15
     {
         type            omegaWallFunction;
         value           $internalField;
     }
-
+    pareti_galleria
+    {
+        type            omegaWallFunction;
+        value           $internalField;   
+    }
+#include "include/pareti_Slip"
     #include "include/frontBackUpperPatches"
+
+     // In case the angluationFlag is set to TRUE, the following patches are redefined
+    #ifeq $angulationFlag true
+        #if #eval {$angulationAngle < 0}
+            backWall
+            {
+                type  fixedValue;
+                value $internalField;
+            }
+        #else
+            backWall
+            {
+                type            inletOutlet;
+                inletValue      $internalField;
+                value           $internalField;
+            }
+        #endif
+
+        #if #eval {$angulationAngle > 0}
+            frontWall
+            {
+                type  fixedValue;
+                value $internalField;
+            }
+        #else
+            frontWall
+            {
+                type            inletOutlet;
+                inletValue      $internalField;
+                value           $internalField;
+            }
+        #endif
+    #endif
 }
 
 

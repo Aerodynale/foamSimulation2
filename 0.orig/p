@@ -13,9 +13,8 @@ FoamFile
     object      p;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
+#include       "include/angulationParameters"
 #include        "include/initialConditions"
-
 
 dimensions      [0 2 -2 0 0 0 0];
 
@@ -29,28 +28,6 @@ boundaryField
     {
         type            zeroGradient;
     }
- // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
-
-    Back
-    {
-        type            zeroGradient;
-    }
-
-    Upper
-    {
-        type            zeroGradient;
-    }
-
-    Front
-    {
-        type            zeroGradient;
-    }
-    Lower 
-    {
-        type            zeroGradient;
-    }
-
-    // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
 
     outlet
     {
@@ -62,13 +39,48 @@ boundaryField
     {
         type            zeroGradient;
     }
-
-    train
+    treno15
     {
         type            zeroGradient;
     }
+    pareti_galleria
+    {
+        type            zeroGradient;   
+    }
+   
+    #include "include/pareti_Slip" 
+    #include "include/frontBackUpperPatches" 
 
-    #include "include/frontBackUpperPatches"
+     // In case the angluationFlag is set to TRUE, the following patches are redefined
+    #ifeq $angulationFlag true
+        #if #eval {$angulationAngle < 0}
+            backWall
+            {
+                type            zeroGradient;
+            }
+        #else
+            backWall
+            {
+                type            fixedValue;
+                value           $internalField;
+            }
+        #endif
+
+        #if #eval {$angulationAngle > 0}
+            frontWall
+            {
+                type            zeroGradient;
+            }
+        #else
+            frontWall
+            {
+                type            fixedValue;
+                value           $internalField;
+            }
+        #endif
+    #endif
+
+    
 }
 
 

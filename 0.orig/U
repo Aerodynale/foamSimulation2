@@ -13,7 +13,7 @@ FoamFile
     object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
+#include       "include/angulationParameters"
 #include        "include/initialConditions"
 
 dimensions      [0 1 -1 0 0 0 0];
@@ -32,41 +32,68 @@ boundaryField
         inletValue      uniform (0 0 0);
         value           $internalField;
     }
-   // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
-
-    Back
-    {
-        type            noSlip;
-    }
-
-    Upper
-    {
-        type            noSlip;
-    }
-
-    Front
-    {
-        type            noSlip;
-    }
-     Lower
-    {
-        type            noSlip;
-    }
-
-    // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
 
     lowerWall
     {
         type            fixedValue;
         value           $internalField;
     }
-
-    train
+    
+    treno15
     {
         type            noSlip;
     }
 
+    pareti_galleria
+    {
+        type            noSlip;
+    }
+    pareti_avanti
+    {
+        type          slip;
+    }
+    
+    pareti_dietro
+    {
+        type          slip;
+    }
+
+
     #include "include/frontBackUpperPatches"
+
+    //Redefinition of back and frontWall in case the angluationFlag is set to TRUE
+
+    #ifeq $angulationFlag true
+        #if #eval {$angulationAngle < 0}
+            backWall
+            {
+                type  fixedValue;
+                value $internalField;
+            }
+        #else
+            backWall
+            {
+                type            inletOutlet;
+                inletValue      uniform (0 0 0);
+                value           $internalField;
+            }
+        #endif
+        
+        #if #eval {$angulationAngle > 0}
+            frontWall
+            {
+                type  fixedValue;
+                value $internalField;
+            }
+        #else
+            frontWall
+            {
+                type            inletOutlet;
+                inletValue      uniform (0 0 0);
+                value           $internalField;
+            }
+        #endif
+    #endif
 }
 
 
