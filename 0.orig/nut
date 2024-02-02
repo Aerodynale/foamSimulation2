@@ -18,11 +18,13 @@ dimensions      [0 2 -1 0 0 0 0];
 
 internalField   uniform 0;
 
+
+
 boundaryField
 {
     #includeEtc "caseDicts/setConstraintTypes"
 
-    frontAndBack  //slip
+    frontAndBack
     {
         type            calculated;
         value           uniform 0;
@@ -40,42 +42,18 @@ boundaryField
         value           uniform 0;
     }
 
-    lowerWall  //slip
+    lowerWall
     {
         type            nutkWallFunction;
         value           uniform 0;
     }
 
-    upperWall //slip
+    upperWall
     {
         type            calculated;
         value           uniform 0;
     }
     
-    pareti_galleria
-    {
-        type            nutkWallFunction;
-        value           uniform 0;
-    }
-
-    pareti_dietro //slip
-    {
-        type            calculated;
-        value           uniform 0;
-    }
-    pareti_avanti //slip
-    {
-        type            calculated;
-        value           uniform 0;
-    }
-    
-    
-    
-    ///////////////////////
-
-
-
-
     Back
     {
         type            nutkWallFunction;
@@ -93,17 +71,17 @@ boundaryField
         type            nutkWallFunction;
         value           uniform 0;
     }
-
-    treno15
+ Lower 
     {
         type            nutkWallFunction;
         value           uniform 0;
     }
-    pareti_galleria
+    train
     {
         type            nutkWallFunction;
         value           uniform 0;
     }
 }
+
 
 // ************************************************************************* //

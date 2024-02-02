@@ -6,9 +6,25 @@
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 
-flowVelocity         (20 0 0);
-pressure             0;
-turbulentKE          0.24;
-turbulentOmega       1.78;
+vorticity1
+{
+    // Mandatory entries
+    type            vorticity;
+    libs            (fieldFunctionObjects);
+
+    // Optional (inherited) entries
+    field           U;
+    result          vorticityField;
+    region          region0;
+    enabled         true;
+    log             true;
+    timeStart       0;
+    timeEnd         1000;
+    executeControl  timeStep;
+    executeInterval 1000;
+    writeControl    timeStep;
+    writeInterval   1000;
+}
+
 
 // ************************************************************************* //

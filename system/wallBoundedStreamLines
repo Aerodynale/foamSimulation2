@@ -27,7 +27,7 @@ near
     );
 
     // Patches/groups to sample (regular expressions)
-    patches         (treno15Group);
+    patches         (motorBikeGroup);
 
     // Distance to sample
     distance        0.001;
@@ -54,9 +54,9 @@ wallBoundedStreamLines
         uniformCoeffs
         {
             axis        x;  //distance;
-            start       (0.5 -0.13 0.0000001);
-            end         (0.5 0.13 0.2);
-            nPoints     10;
+            start       (0.0035 0.0999 0.0001);
+            end         (0.0035 0.0999 0.0099);
+            nPoints     20;
         }
 
         cloudCoeffs
@@ -67,7 +67,7 @@ wallBoundedStreamLines
 
         patchSeedCoeffs
         {
-            patches     (treno15Group);
+            patches     (motorBikeGroup);
             axis        x;  //distance;
             maxPoints   20000;
         }
