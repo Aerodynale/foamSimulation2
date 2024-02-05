@@ -16,7 +16,7 @@ ensightWrite
     //patches       ( "motorBike.*" );
 
     //- These patches are uninteresting
-    excludePatches  ( inlet outlet front back ".*[Ww]all" );
+    excludePatches  ( inlet outlet frontAndBack ".*[Ww]all" );
 }
 
 

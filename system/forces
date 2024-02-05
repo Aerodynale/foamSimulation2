@@ -5,9 +5,6 @@
 |   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
-
-# include "../0.orig/include/angulationParameters"
-
 forces1
 {
     type            forces;
@@ -19,38 +16,38 @@ forces1
 
     log             yes;
 
-    patches         (treno15);
+    patches         (train);
     rho             rhoInf;      // Indicates incompressible
     rhoInf          1;           // Required when rho = rhoInf
     liftDir         (0 0 1);
     dragDir         (1 0 0);
     CofR            (0 0 0);  // Axle midpoint on ground
     pitchAxis       (0 1 0);
-    magUInf         $parallelVelocity;
+    magUInf         20;
     lRef            0.434;        // Wheelbase length
     Aref            0.00895;        // Estimated
 }
 
-/*
+
 binField1
 {
     type                    binField;
     libs                    (fieldFunctionObjects);
     binModel                singleDirectionUniformBin;
     fields                  (force);
-    patches                 (treno15);
+    patches                 (train);
     decomposePatchValues    true;
     CofR                    ${../forces1/CofR};
 
     binData
     {
-        nBin        100;          // output data into 100 bins
+        nBin        300;          // output data into 100 bins
         direction   (1 0 0);     // bin direction
         cumulative  yes;
     }
     writeControl            timeStep;
 }
-*/
+
 
 
 // ************************************************************************* //

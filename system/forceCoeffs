@@ -17,7 +17,7 @@ forceCoeffs1
 
     log             yes;
 
-    patches         (treno15);
+    patches         (train);
     rho             rhoInf;      // Indicates incompressible
     rhoInf          1;           // Required when rho = rhoInf
     liftDir         (0 0 1);
@@ -36,17 +36,22 @@ binField1
     libs                    (fieldFunctionObjects);
     binModel                singleDirectionUniformBin;
     fields                  (forceCoeff);
-    patches                 (treno15Group);
+    patches                 (motorBikeGroup);
     decomposePatchValues    true;
     CofR                    ${../forceCoeffs1/CofR};
 
     binData
     {
-        nBin        100;          // output data into 20 bins
+        nBin        300;          // output data into 20 bins
         direction   (1 0 0);     // bin direction
         cumulative  yes;
     }
+    timeStart               0;
+    timeEnd                 100;
+    executeControl          timeStep;
+    executeInterval         1;
     writeControl            timeStep;
+    writeInterval           1;
 }
 
 

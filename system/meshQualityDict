@@ -20,5 +20,10 @@ FoamFile
 //- minFaceWeight (0 -> 0.5)
 minFaceWeight 0.02;
 
+//aggiungo limiti skewness
+
+maxBoundarySkewness     20;
+maxInternalSkewness     4;
+
 
 // ************************************************************************* //

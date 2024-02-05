@@ -20,8 +20,8 @@ surfaceFeatureExtract > logs/01_surfaceFeature.log 2>&1
 blockMesh > logs/02_blockMesh.log 2>&1
 decomposePar > logs/03_decompose.log 2>&1
 mpirun --hostfile machinefile.$JOB_ID -np 32 snappyHexMesh -parallel -overwrite > logs/04_snappyHexMesh.log 2>&1
-topoSet > logs/05_topoSet.log 2>&1
-createPatch -overwrite > logs/06_createPatch.log 2>&1
+#topoSet > logs/05_topoSet.log 2>&1
+#createPatch -overwrite > logs/06_createPatch.log 2>&1
 reconstructParMesh -constant > logs/07_reconstruct.log 2>&1
 rm -rf processor*
 checkMesh > logs/08_checkMesh.log 2>&1

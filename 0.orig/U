@@ -13,9 +13,9 @@ FoamFile
     object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-#include       "include/angulationParameters"
-#include        "include/initialConditions"
 
+#include        "include/initialConditions"
+#include     "include/angulationParameters"
 dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform $flowVelocity;
@@ -32,68 +32,21 @@ boundaryField
         inletValue      uniform (0 0 0);
         value           $internalField;
     }
-
+    upperWall
+    {
+        type            symmetryPlane;
+    }
     lowerWall
     {
-        type            fixedValue;
-        value           $internalField;
+        type            movingWallVelocity;
+        value           uniform ($x_velocity $y_velocity 0);
     }
-    
-    treno15
+    train
     {
         type            noSlip;
     }
 
-    pareti_galleria
-    {
-        type            noSlip;
-    }
-    pareti_avanti
-    {
-        type          slip;
-    }
-    
-    pareti_dietro
-    {
-        type          slip;
-    }
-
-
-    #include "include/frontBackUpperPatches"
-
-    //Redefinition of back and frontWall in case the angluationFlag is set to TRUE
-
-    #ifeq $angulationFlag true
-        #if #eval {$angulationAngle < 0}
-            backWall
-            {
-                type  fixedValue;
-                value $internalField;
-            }
-        #else
-            backWall
-            {
-                type            inletOutlet;
-                inletValue      uniform (0 0 0);
-                value           $internalField;
-            }
-        #endif
-        
-        #if #eval {$angulationAngle > 0}
-            frontWall
-            {
-                type  fixedValue;
-                value $internalField;
-            }
-        #else
-            frontWall
-            {
-                type            inletOutlet;
-                inletValue      uniform (0 0 0);
-                value           $internalField;
-            }
-        #endif
-    #endif
+    //#include "include/frontBackUpperPatches"
 }
 
 

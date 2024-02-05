@@ -6,11 +6,25 @@
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 
-#include  "angulationParameters"
+vorticity1
+{
+    // Mandatory entries
+    type            vorticity;
+    libs            (fieldFunctionObjects);
 
-flowVelocity         ($x_velocity $y_velocity 0);
-pressure             0;
-turbulentKE          0.24;
-turbulentOmega       1.78;
+    // Optional (inherited) entries
+    field           U;
+    result          vorticityField;
+    region          region0;
+    enabled         true;
+    log             true;
+    timeStart       0;
+    timeEnd         800;
+    executeControl  timeStep;
+    executeInterval 800;
+    writeControl    timeStep;
+    writeInterval   800;
+}
+
 
 // ************************************************************************* //

@@ -13,21 +13,18 @@ FoamFile
     object      nut;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
+//#include  "angulationParameters"
 dimensions      [0 2 -1 0 0 0 0];
 
 internalField   uniform 0;
+
+
 
 boundaryField
 {
     #includeEtc "caseDicts/setConstraintTypes"
 
-    frontAndBack  //slip
-    {
-        type            calculated;
-        value           uniform 0;
-    }
-   
+    
     inlet
     {
         type            calculated;
@@ -40,70 +37,23 @@ boundaryField
         value           uniform 0;
     }
 
-    lowerWall  //slip
+    lowerWall
     {
         type            nutkWallFunction;
         value           uniform 0;
     }
 
-    upperWall //slip
+    upperWall
     {
-        type            calculated;
+        type            symmetryPlane;
         value           uniform 0;
     }
-    
-    pareti_galleria
-    {
-        type            nutkWallFunction;
-        value           uniform 0;
-    }
-
-    pareti_dietro //slip
-    {
-        type            calculated;
-        value           uniform 0;
-    }
-    pareti_avanti //slip
-    {
-        type            calculated;
-        value           uniform 0;
-    }
-    
-    
-    
-    ///////////////////////
-
-
-
-
-    Back
-    {
-        type            nutkWallFunction;
-        value           uniform 0;
-    }
-
-    Upper
-    {
-        type            nutkWallFunction;
-        value           uniform 0;
-    }
-
-    Front
-    {
-        type            nutkWallFunction;
-        value           uniform 0;
-    }
-
-    treno15
-    {
-        type            nutkWallFunction;
-        value           uniform 0;
-    }
-    pareti_galleria
+    train
     {
         type            nutkWallFunction;
         value           uniform 0;
     }
 }
+
 
 // ************************************************************************* //
