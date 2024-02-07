@@ -38,26 +38,26 @@ geometry
     {
         type box;
         min  (0.7 -0.25 0);
-        max  (4.9   1  0.7);
+        max  (4.9  1.1  0.7);
     }
     refinementBox2
     {
         type box;
         min  (0.8 -0.2 0);
-        max  (4.5 0.8 0.35);
+        max  (4.7  0.9 0.35);
     }
      refinementBox3
     {
         type box;
         min  (0.9 -0.15 0);
-        max  (4   0.5 0.3);
+        max  (4.3  0.7 0.3);
     }
     
      refinementBox4
     {
         type box;
         min  (1   -0.1 0);
-        max  (3.5  0.4 0.2);
+        max  (3.7  0.5 0.2);
     }
     
    
