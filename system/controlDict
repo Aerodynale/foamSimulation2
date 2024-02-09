@@ -54,7 +54,7 @@ functions
     //#include "ensightWrite"
     #include "forces"
     //#include "fieldAverage"
-    //#include "yPlus"
+    #include "yPlus"
     #include "vorticity"
 
 }

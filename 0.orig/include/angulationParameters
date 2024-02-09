@@ -27,7 +27,7 @@ angulationFlag          true;
 // of the train over the x-y plane for positive  values of the angle. 
 // The angle is defined in degrees and a limit angle is defined too
 
-angulationAngle         15;
+angulationAngle         18;
 angleLimit              20.;
 #ifeq $angulationFlag true  
     #if #eval {$angulationAngle > $angleLimit}
