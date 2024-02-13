@@ -13,7 +13,7 @@ FoamFile
     object      omega;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-//#include  "angulationParameters"
+
 #include        "include/initialConditions"
 
 dimensions      [0 0 -1 0 0 0 0];
@@ -27,12 +27,32 @@ boundaryField
     #includeEtc "caseDicts/setConstraintTypes"
 
     #include "include/fixedInlet"
+   // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
 
-   upperWall
+    Back
     {
-        type            symmetryPlane;;
+        type            omegaWallFunction;
+        value           $internalField;
     }
-    
+
+   Upper
+    {
+        type            omegaWallFunction;
+        value           $internalField;
+    }
+
+Front
+    {
+        type            omegaWallFunction;
+        value           $internalField;
+    }
+    Lower 
+    {
+        type            omegaWallFunction;
+        value           $internalField;
+    }
+    // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
+
     outlet
     {
         type            inletOutlet;
@@ -52,10 +72,8 @@ boundaryField
         value           $internalField;
     }
 
-    //#include "include/frontBackUpperPatches"
-    
+    #include "include/frontBackUpperPatches"
 }
-
 
 
 // ************************************************************************* //

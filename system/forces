@@ -5,6 +5,7 @@
 |   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
+
 forces1
 {
     type            forces;
@@ -23,7 +24,7 @@ forces1
     dragDir         (1 0 0);
     CofR            (0 0 0);  // Axle midpoint on ground
     pitchAxis       (0 1 0);
-    magUInf         20;
+    magUInf         1;
     lRef            0.434;        // Wheelbase length
     Aref            0.00895;        // Estimated
 }
@@ -41,7 +42,7 @@ binField1
 
     binData
     {
-        nBin        300;          // output data into 100 bins
+        nBin        100;          // output data into 100 bins
         direction   (1 0 0);     // bin direction
         cumulative  yes;
     }

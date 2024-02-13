@@ -14,13 +14,14 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-numberOfSubdomains 32;
+numberOfSubdomains 16;
 
 method          scotch;
+
 /*
 coeffs
 {
-    n           (3 2 1);
+    n           (16 1 2);
 }
 */
 

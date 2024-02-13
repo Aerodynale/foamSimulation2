@@ -13,7 +13,7 @@ FoamFile
     object      nut;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-//#include  "angulationParameters"
+
 dimensions      [0 2 -1 0 0 0 0];
 
 internalField   uniform 0;
@@ -24,7 +24,12 @@ boundaryField
 {
     #includeEtc "caseDicts/setConstraintTypes"
 
-    
+    frontAndBack
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+   
     inlet
     {
         type            calculated;
@@ -45,7 +50,30 @@ boundaryField
 
     upperWall
     {
-        type            symmetryPlane;
+        type            calculated;
+        value           uniform 0;
+    }
+    
+    Back
+    {
+        type            nutkWallFunction;
+        value           uniform 0;
+    }
+
+    Upper
+    {
+        type            nutkWallFunction;
+        value           uniform 0;
+    }
+
+    Front
+    {
+        type            nutkWallFunction;
+        value           uniform 0;
+    }
+ Lower 
+    {
+        type            nutkWallFunction;
         value           uniform 0;
     }
     train

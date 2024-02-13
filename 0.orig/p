@@ -13,7 +13,7 @@ FoamFile
     object      p;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-//#include       "include/angulationParameters"
+
 #include        "include/initialConditions"
 
 
@@ -29,16 +29,33 @@ boundaryField
     {
         type            zeroGradient;
     }
+ // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
+
+    Back
+    {
+        type            zeroGradient;
+    }
+
+    Upper
+    {
+        type            zeroGradient;
+    }
+
+    Front
+    {
+        type            zeroGradient;
+    }
+    Lower 
+    {
+        type            zeroGradient;
+    }
+
+    // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
 
     outlet
     {
         type            fixedValue;
         value           $internalField;
-    }
-    upperWall
-    {
-        type            symmetryPlane;
-        value           uniform 0;
     }
 
     lowerWall
@@ -50,8 +67,9 @@ boundaryField
     {
         type            zeroGradient;
     }
+
+    #include "include/frontBackUpperPatches"
 }
-    //#include "include/frontBackUpperPatches"
 
 
 // ************************************************************************* //
