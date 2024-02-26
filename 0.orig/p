@@ -29,33 +29,28 @@ boundaryField
     {
         type            zeroGradient;
     }
- // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
-
-    Back
-    {
-        type            zeroGradient;
-    }
-
-    Upper
-    {
-        type            zeroGradient;
-    }
-
-    Front
-    {
-        type            zeroGradient;
-    }
-    Lower 
-    {
-        type            zeroGradient;
-    }
-
-    // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
 
     outlet
     {
         type            fixedValue;
         value           $internalField;
+    }
+    front
+    {
+
+        type            symmetryPlane;
+        value           uniform 0;
+    }
+    back
+    {
+
+        type            symmetryPlane;
+        value           uniform 0;
+    }
+    upperWall
+    {
+        type            symmetryPlane;
+        value           uniform 0;
     }
 
     lowerWall
@@ -68,7 +63,7 @@ boundaryField
         type            zeroGradient;
     }
 
-    #include "include/frontBackUpperPatches"
+    //#include "include/frontBackUpperPatches"
 }
 
 

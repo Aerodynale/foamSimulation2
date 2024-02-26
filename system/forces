@@ -29,7 +29,7 @@ forces1
     Aref            0.00895;        // Estimated
 }
 
-
+/*
 binField1
 {
     type                    binField;
@@ -42,13 +42,18 @@ binField1
 
     binData
     {
-        nBin        100;          // output data into 100 bins
+        nBin        300;          // output data into 100 bins
         direction   (1 0 0);     // bin direction
         cumulative  yes;
     }
-    writeControl            timeStep;
+    timeStart       0;
+    timeEnd         1000;
+    executeControl  timeStep;
+    executeInterval 1000;
+    writeControl    timeStep;
+    writeInterval   1000;
 }
-
+*/
 
 
 // ************************************************************************* //

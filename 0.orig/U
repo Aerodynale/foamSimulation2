@@ -32,33 +32,22 @@ boundaryField
         inletValue      uniform (0 0 0);
         value           $internalField;
     }
-   // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
-
-    Back
+    front
     {
-        type            noSlip;
+        type            symmetryPlane;
     }
-
-    Upper
+    back
     {
-        type            noSlip;
+        type            symmetryPlane;
     }
-
-    Front
+    upperWall
     {
-        type            noSlip;
+        type            symmetryPlane;
     }
-     Lower
-    {
-        type            noSlip;
-    }
-
-    // -<-<-<-<-<-<-<-< Patches created from createPatchDict >->->->->->->->->-
-
     lowerWall
     {
-        type            fixedValue;
-        value           $internalField;
+        type            movingWallVelocity;
+        value           uniform (20 0 0);
     }
 
     train
@@ -66,7 +55,7 @@ boundaryField
         type            noSlip;
     }
 
-    #include "include/frontBackUpperPatches"
+    //#include "include/frontBackUpperPatches"
 }
 
 

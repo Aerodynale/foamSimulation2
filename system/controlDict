@@ -22,7 +22,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         700;
+endTime         800;
 
 deltaT          1;
 
@@ -30,7 +30,7 @@ writeControl    timeStep;
 
 writeInterval   100;
 
-purgeWrite      1;
+purgeWrite      2;
 
 writeFormat     binary;
 
