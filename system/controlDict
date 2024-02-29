@@ -22,7 +22,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         1000;
+endTime         800;
 
 deltaT          1;
 
@@ -55,7 +55,7 @@ functions
     #include "forces"
     //#include "fieldAverage"
     //#include "yPlus"
-    #include "vorticity"
+    //#include "vorticity"
 
 }
 
