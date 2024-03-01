@@ -17,24 +17,24 @@ cp -r 0.orig 0
 # Build Background mesh
 surfaceFeatureExtract > logs/01_surfaceFeature.log 2>&1
 blockMesh > logs/02_blockMesh.log 2>&1
-decomposePar > logs/03_decompose.log 2>&1
+#decomposePar > logs/03_decompose.log 2>&1
 snappyHexMesh -overwrite > logs/04_snappyHexMesh.log 2>&1
 topoSet > logs/05_topoSet.log 2>&1
 createPatch -overwrite > logs/06_createPatch.log 2>&1
-reconstructParMesh -constant > logs/07_reconstruct.log 2>&1
-rm -rf processor*
+#reconstructParMesh -constant > logs/07_reconstruct.log 2>&1
+#rm -rf processor*
 checkMesh > logs/08_checkMesh.log 2>&1
 
 # run the simulation rm -r 0
-rm -rf processor*
+#rm -rf processor*
 rm -r 0
 cp -r 0.orig 0
 renumberMesh -overwrite > logs/09_renumberMesh.log 2>&1
-decomposePar > logs/10_decomposePar_secondaIterazione.log 2>&1
+#decomposePar > logs/10_decomposePar_secondaIterazione.log 2>&1
 potentialFoam > logs/11_potentialFoam.log 2>&1
 simpleFoam > logs/12_simpleFoam.log 2>&1
-reconstructParMesh -constant > logs/13_reconstructParMesh.log 2>&1
-reconstructPar -latestTime > logs/14_reconstructPar.log 2>&1
+#reconstructParMesh -constant > logs/13_reconstructParMesh.log 2>&1
+#reconstructPar -latestTime > logs/14_reconstructPar.log 2>&1
 
 touch train.foam
 
